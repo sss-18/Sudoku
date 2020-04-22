@@ -1,0 +1,82 @@
+<sudoku code>
+
+
+
+import tkinter as tk
+def nothing():
+	print("ruck jao")
+root=tk.Tk()
+root.title("sudokoki")
+root.geometry("290x250")
+frame1=tk.Frame(root)
+frame2=tk.Frame(root)
+frame3=tk.Frame(root)
+frame1.pack(side="top",fill="x")
+frame2.pack(side="top",fill="x")
+frame3.pack(side="top",fill="x")
+#----------MENU--------
+my_menu=tk.Menu(frame1)
+root.config(menu=my_menu)
+file_menu=tk.Menu(my_menu)
+my_menu.add_cascade(label="File",menu=file_menu)
+edit_menu=tk.Menu(my_menu)
+
+
+my_menu.add_cascade(label="Edit",menu=edit_menu)
+help_menu=tk.Menu(my_menu)
+my_menu.add_cascade(label="Help",menu=help_menu)
+file_menu.add_command(label="New",command=nothing)
+file_menu.add_separator()
+file_menu.add_command(label="Print",command=nothing)
+file_menu.add_separator()
+file_menu.add_command(label="Open",command=nothing)
+file_menu.add_command(label="Save as",command=nothing)
+file_menu.add_separator()
+file_menu.add_command(label="Quit",command=nothing)
+
+edit_menu.add_command(label="Clear all moves",command=nothing)
+edit_menu.add_separator()
+edit_menu.add_command(label="level",command=nothing)
+edit_menu.add_command(label="Number",command=nothing)
+edit_menu.add_command(label="Language",command=nothing)
+edit_menu.add_separator()
+
+#---------toolbar----------
+toolbar=tk.Frame(frame2,bg="grey")
+photo1=tk.PhotoImage(file="cut1.png")
+photo2=tk.PhotoImage(file="copy1.png")
+photo3=tk.PhotoImage(file="paste1.png")
+cut=tk.Button(toolbar,image=photo1,command=nothing)
+copy=tk.Button(toolbar,image=photo2,command=nothing)
+paste=tk.Button(toolbar,image=photo3,command=nothing)
+
+cut.pack(side="left",padx=2,pady=2)
+copy.pack(side="left",padx=2,pady=2)
+paste.pack(side="left",padx=2,pady=2)
+
+toolbar.pack(side="top",fill="x")
+
+
+
+
+
+
+#--------grid---------------
+
+
+for i in range(9):
+
+    for j in range(9): #Columns
+        if (i in (0,1,2,6,7,8)and j in (3,4,5) or( i in (3,4,5)and j in (0,1,2,6,7,8) )):
+            color="cyan"
+        else:
+            color="white"
+        b = tk.Entry(frame3,text="",width=4,bg=color,fg="black")
+        b.grid(row=i+2,column=j,padx=2,pady=2)
+root.mainloop()
+
+
+
+
+
+</code>
